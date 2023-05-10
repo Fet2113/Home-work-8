@@ -2,13 +2,16 @@ import java.time.LocalDate;
 
 public class Main {
 
-
-    public static void main(String[] args) {
+       public static void main(String[] args) {
         int currentYear = LocalDate.now().getYear();
         task1(2018);
         task2(1, currentYear);
-        task3(10);
-    }
+        int result = task3(30);
+        if(result == -1) {
+            System.out.println("Доставка невозможна."); }
+        else {
+            System.out.println("Потребуется дней: " + result);
+    }}
             public static void task1(int year) {
                 System.out.println("Задача 1");
                 if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
@@ -31,7 +34,9 @@ public class Main {
                 }
 
             }
-            public static void task3(int deliveryDistance) {
+            public static int task3(int deliveryDistance){
+
+
                 System.out.println("Задача 3");
                 int deliveryDay = 1;
                 if (deliveryDistance > 20) {
@@ -41,8 +46,9 @@ public class Main {
                     deliveryDay++;
                 }
                 if (deliveryDistance > 100) {
-                    System.out.println("Доставка невозможна.");
-                }
-                else System.out.println("Потребуется дней: " + deliveryDay);
-                       }
-    }
+                    return -1;
+                                    }
+                else
+                    return deliveryDay;
+            }
+}
